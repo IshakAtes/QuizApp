@@ -1,3 +1,7 @@
+body {
+    background-color: #fb6100 !important;
+}
+
 .quizContainer {
     display: flex;
     justify-content: center;
