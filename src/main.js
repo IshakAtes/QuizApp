@@ -1,6 +1,6 @@
 let questions = [
     {
-        "question": "Wer hat Html erfunden",
+        "question": "Wer hat Html erfunden?",
         "answer1": "Robbie Williams",
         "answer2": "Lady Gaga",
         "answer3": "Tim Berners-Lee",
@@ -40,3 +40,22 @@ let questions = [
         "rightAnswer": 1
     },
 ];
+
+let currentQuestion = 0;
+
+
+
+function init(){
+    document.getElementById('totalQuestions').innerHTML = questions.length;
+    showQuestion();
+}
+
+
+function showQuestion(){
+    let question = questions[currentQuestion];
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer1').innerHTML = question['answer1'];
+    document.getElementById('answer2').innerHTML = question['answer2'];
+    document.getElementById('answer3').innerHTML = question['answer3'];
+    document.getElementById('answer4').innerHTML = question['answer4'];
+}
