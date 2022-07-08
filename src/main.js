@@ -8,7 +8,7 @@ let questions = [
         "rightAnswer": 3
     },
     {
-        "question": "Was bedeutet das Html Tag &lt;e&gt;?",
+        "question": "Was bedeutet das Html Tag &lt;a&gt;?",
         "answer1": "Text Fett",
         "answer2": "Container",
         "answer3": "Ein Link",
@@ -17,10 +17,10 @@ let questions = [
     },
     {
         "question": "Wie bindet man eine Website in eine Website ein?",
-        "answer1": "Robbie Williams",
-        "answer2": "Kein Plan",
-        "answer3": "Tim Berners-Lee",
-        "answer4": "Justin Bieber",
+        "answer1": "iframe, frame, and frameset",
+        "answer2": "iframe",
+        "answer3": "frame",
+        "answer4": "frameset",
         "rightAnswer": 2
     },
     {
@@ -52,22 +52,55 @@ function init(){
 
 
 function showQuestion(){
-    let question = questions[currentQuestion];
-    document.getElementById('questionText').innerHTML = question['question'];
-    document.getElementById('answer1').innerHTML = question['answer1'];
-    document.getElementById('answer2').innerHTML = question['answer2'];
-    document.getElementById('answer3').innerHTML = question['answer3'];
-    document.getElementById('answer4').innerHTML = question['answer4'];
+    if (currentQuestion >= questions.length) {
+        // Todo: show end screen
+    } else {
+        let currentQuestionCounter = currentQuestion + 1;
+        let question = questions[currentQuestion];
+
+        document.getElementById('questionNumber').innerHTML = currentQuestionCounter;
+        document.getElementById('questionText').innerHTML = question['question'];
+        document.getElementById('answer1').innerHTML = question['answer1'];
+        document.getElementById('answer2').innerHTML = question['answer2'];
+        document.getElementById('answer3').innerHTML = question['answer3'];
+        document.getElementById('answer4').innerHTML = question['answer4'];
+    }
 }
 
 
 function answer(answer){
     let question = questions[currentQuestion];
         let selectedQuestionNumber = answer.slice(-1);
+        // console.log(`selected Answer ${selectedQuestionNumber}`)
+        // console.log(`right Answer ${question['rightAnswer']}`)
+
+        let idOfRightAnswer = `answer${question['rightAnswer']}`;
+        
         if (selectedQuestionNumber == question['rightAnswer']) {
-            console.log('richtige Antwort')
             document.getElementById(answer).classList.add('bg-success');
         } else {
             document.getElementById(answer).classList.add('bg-danger');
+            document.getElementById(idOfRightAnswer).classList.add('bg-success');
         }
+        document.getElementById('nextButton').disabled = false;
+}
+
+
+function nextQuestion(){
+    currentQuestion++; // Currentquestion wird um 1 erhöht und showQuestion neu aufgerufen damit die Fragen vom 2Json Array angezeigt werden.
+    showQuestion();
+    document.getElementById('nextButton').disabled = true;
+    resetAnswerBtn();
+    showQuestion();    
+}
+
+function resetAnswerBtn(){
+    document.getElementById('answer1').classList.remove('bg-danger');
+    document.getElementById('answer1').classList.remove('bg-success');
+    document.getElementById('answer2').classList.remove('bg-danger');
+    document.getElementById('answer2').classList.remove('bg-success');
+    document.getElementById('answer3').classList.remove('bg-danger');
+    document.getElementById('answer3').classList.remove('bg-success');
+    document.getElementById('answer4').classList.remove('bg-danger');
+    document.getElementById('answer4').classList.remove('bg-success');
 }
