@@ -59,3 +59,15 @@ function showQuestion(){
     document.getElementById('answer3').innerHTML = question['answer3'];
     document.getElementById('answer4').innerHTML = question['answer4'];
 }
+
+
+function answer(answer){
+    let question = questions[currentQuestion];
+        let selectedQuestionNumber = answer.slice(-1);
+        if (selectedQuestionNumber == question['rightAnswer']) {
+            console.log('richtige Antwort')
+            document.getElementById(answer).classList.add('bg-success');
+        } else {
+            document.getElementById(answer).classList.add('bg-danger');
+        }
+}
