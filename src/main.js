@@ -54,6 +54,8 @@ function init(){
 function showQuestion(){
     if (currentQuestion >= questions.length) {
         // Todo: show end screen
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionBody').style = 'display: none;'
     } else {
         let currentQuestionCounter = currentQuestion + 1;
         let question = questions[currentQuestion];

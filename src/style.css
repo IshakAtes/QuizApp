@@ -25,3 +25,37 @@ body {
 .bg-success, .bg-danger {
     color: white !important;
 }
+
+.card {
+    display: none !important;
+}
+
+.endScreenDivBorder {
+    background-color: rgba(0, 40, 151, 0.822);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* row-gap: 0%; */
+}
+
+.endScreenDivBorder img {
+    margin-top: 0;
+    width: 400px;
+    height: auto;
+}
+
+.endBtn {
+    background-color: #fb3200 !important;
+    width: 240px;
+    border: 1px solid #fb3200 !important;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
