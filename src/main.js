@@ -42,6 +42,7 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let rightAnswersCounter = 0;
 
 
 
@@ -54,6 +55,9 @@ function init(){
 function showQuestion(){
     if (currentQuestion >= questions.length) {
         // Todo: show end screen
+        let score = document.getElementById('score');
+        score.innerHTML = '';
+        score.innerHTML = `${rightAnswersCounter}/${questions.length}`;
         document.getElementById('endScreen').style = '';
         document.getElementById('questionBody').style = 'display: none;'
     } else {
@@ -80,6 +84,7 @@ function answer(answer){
         
         if (selectedQuestionNumber == question['rightAnswer']) {
             document.getElementById(answer).classList.add('bg-success');
+            rightAnswersCounter++;
         } else {
             document.getElementById(answer).classList.add('bg-danger');
             document.getElementById(idOfRightAnswer).classList.add('bg-success');

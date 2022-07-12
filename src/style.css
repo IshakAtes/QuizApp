@@ -26,10 +26,6 @@ body {
     color: white !important;
 }
 
-.card {
-    display: none !important;
-}
-
 .endScreenDivBorder {
     background-color: rgba(0, 40, 151, 0.822);
     width: 600px;
@@ -43,7 +39,7 @@ body {
 }
 
 .endScreenDivBorder img {
-    margin-top: 0;
+    margin-top: 10px;
     width: 400px;
     height: auto;
 }
