@@ -54,15 +54,23 @@ function init(){
 
 function showQuestion(){
     if (currentQuestion >= questions.length) {
-        // Todo: show end screen
+        // Show end screen
         let score = document.getElementById('score');
         score.innerHTML = '';
         score.innerHTML = `${rightAnswersCounter}/${questions.length}`;
         document.getElementById('endScreen').style = '';
-        document.getElementById('questionBody').style = 'display: none;'
-    } else {
+        document.getElementById('questionBody').style = 'display: none;';
+        document.getElementById('footerContainer').style = 'display: none;';
+        document.getElementById('progressBar').innerHTML = `${100}%`;
+        document.getElementById('progressBar').style = `width: ${100}%;`;
+    } else { // Show Question
         let currentQuestionCounter = currentQuestion + 1;
         let question = questions[currentQuestion];
+        let percent = (currentQuestion) / questions.length;
+        percent = Math.round(percent * 100);
+
+        document.getElementById('progressBar').innerHTML = `${percent}%`;
+        document.getElementById('progressBar').style = `width: ${percent}%;`;
 
         document.getElementById('questionNumber').innerHTML = currentQuestionCounter;
         document.getElementById('questionText').innerHTML = question['question'];
@@ -94,7 +102,7 @@ function answer(answer){
 
 
 function nextQuestion(){
-    currentQuestion++; // Currentquestion wird um 1 erhöht und showQuestion neu aufgerufen damit die Fragen vom 2Json Array angezeigt werden.
+    currentQuestion++; // Currentquestion wird um 1 erhöht und showQuestion neu aufgerufen damit die Fragen vom zweiten Json Array angezeigt werden.
     showQuestion();
     document.getElementById('nextButton').disabled = true;
     resetAnswerBtn();
