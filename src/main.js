@@ -71,7 +71,6 @@ function showQuestion(){
 
         document.getElementById('progressBar').innerHTML = `${percent}%`;
         document.getElementById('progressBar').style = `width: ${percent}%;`;
-
         document.getElementById('questionNumber').innerHTML = currentQuestionCounter;
         document.getElementById('questionText').innerHTML = question['question'];
         document.getElementById('answer1').innerHTML = question['answer1'];
@@ -118,4 +117,14 @@ function resetAnswerBtn(){
     document.getElementById('answer3').classList.remove('bg-success');
     document.getElementById('answer4').classList.remove('bg-danger');
     document.getElementById('answer4').classList.remove('bg-success');
+}
+
+
+function restartGame(){
+    rightAnswersCounter = 0;
+    currentQuestion = 0;
+    document.getElementById('endScreen').style = 'display: none;'; // endscreen ausblenden
+    document.getElementById('questionBody').style = 'display: flex; width: 30rem;'; // question body wider einblenden
+    document.getElementById('footerContainer').style = 'display: flex;'; // footer wieder einblenden
+    init();
 }
