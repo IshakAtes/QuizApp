@@ -34,14 +34,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-around; */
-    /* row-gap: 0%; */
+    gap: 20px;
 }
 
 .endScreenDivBorder img {
     margin-top: 10px;
     width: 400px;
     height: auto;
+    margin-top: 24px;
 }
 
 .endBtn {

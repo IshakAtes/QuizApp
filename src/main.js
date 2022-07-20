@@ -46,6 +46,7 @@ let rightAnswersCounter = 0;
 let audioSuccess = new Audio('src/sounds/success.mp3');
 let audioFail = new Audio('src/sounds/wrong.mp3');
 let audioRepeat = new Audio('src/sounds/repeat.mp3');
+let audioButton = new Audio('src/sounds/button.mp3');
 
 
 function init(){
@@ -65,6 +66,7 @@ function showQuestion(){
         document.getElementById('footerContainer').style = 'display: none;';
         document.getElementById('progressBar').innerHTML = `${100}%`;
         document.getElementById('progressBar').style = `width: ${100}%;`;
+        audioRepeat.play();
     } else { // Show Question
         let currentQuestionCounter = currentQuestion + 1;
         let question = questions[currentQuestion];
@@ -88,9 +90,7 @@ function answer(answer){
         let selectedQuestionNumber = answer.slice(-1);
         // console.log(`selected Answer ${selectedQuestionNumber}`)
         // console.log(`right Answer ${question['rightAnswer']}`)
-
         let idOfRightAnswer = `answer${question['rightAnswer']}`;
-        
         if (selectedQuestionNumber == question['rightAnswer']) {
             document.getElementById(answer).classList.add('bg-success');
             audioSuccess.play();
@@ -130,6 +130,12 @@ function restartGame(){
     document.getElementById('endScreen').style = 'display: none;'; // endscreen ausblenden
     document.getElementById('questionBody').style = 'display: flex; width: 30rem;'; // question body wider einblenden
     document.getElementById('footerContainer').style = 'display: flex;'; // footer wieder einblenden
-    audioRepeat.play();
+    audioButton.play();
     init();
+}
+
+
+function shareButton() {
+    audioButton.play();
+    alert("Teile das Ergebnis mit deinen Freunden!");
 }
